@@ -9,6 +9,11 @@ Key Takeaways:
 - writing validations for input data
 - RESTful APIs
 
+Improvements:
+-more data validation
+-validate the reminder method to ensure it's working as expected
+-improve styling
+
 
 Things you may want to cover:
 
