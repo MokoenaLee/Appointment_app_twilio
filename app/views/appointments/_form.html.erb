@@ -1,0 +1,55 @@
+<!--this new appointment view is a combination of HTML and ruby code that encompasses error checking in the form-->
+<!--#display those errors in human readable & understandable format and ends with submiting the form details for posting to our model-->
+
+<!--using this file as the standard for views -->
+<!-- using the form_for tag to bind the form to the model -->
+<%= form_for @appointment, :html => { :class => "form-horizontal appointment" } do |f|%>
+  <% if @appointment.errors.any? %>
+     <div id="error_expl" class="panel panel-danger">
+       <div class="panel-heading">
+         <h3 class="panel-title"><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved: </h3>
+       </div>
+       <div class="panel-body">
+         <ul>
+           <% @appointment.errors.full_messages.each do |msg| %>
+             <li><% msg %></li>
+           <% end %>
+         </ul>
+       </div>
+     </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+    <%=f.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_number, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :phone_number, :class => "form-control" %>
+    </div>
+    <%=f.error_span(:phone_number)%>
+  </div>
+  <div class="form-group">
+    <%= f.label :time, "Time and Date", :class => 'control-label col-lg-2' %>
+    <div class="col-lg-2">
+      <%= time_select :appointment, :time, { :class => "form-control"} %>
+      <!-- used time_select above because that's what rails expects when dealing with ActiveRecord forms -->
+    </div>
+    <div class="col-lg-4">
+      <%= date_select :appointment, :time, {:class => "form-control"} %>
+    </div>
+    <%=f.error_span(:time) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), appointments_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
