@@ -1,7 +1,8 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
   validates :name, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number,presence: true
+  #numericality => {:only_integer => true}
   validates :time, presence: true
 
   after_create :reminder
