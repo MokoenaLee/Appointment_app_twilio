@@ -15,8 +15,6 @@ Improvements:
 -improve styling
 
 
-Things you may want to cover:
-
 * Ruby version used: '2.7.1', rails -v 'rails', '~> 6.0.3', '>= 6.0.3.1' (please refer to the gem file for other gems used: appointmentApp/Gemfile)
 
 * Note to use : rake to run validation tests
